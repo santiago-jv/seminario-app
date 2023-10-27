@@ -10,7 +10,7 @@ import "./app.css";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#5e2cf5", // Cambia el color principal
+            main: "#AE4565", // Cambia el color principal
         },
         secondary: {
             main: "#333", // Cambia el color secundario
