@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { LoginRequest } from "../../infrastructure/firebase/requests/login.request";
-import { login } from "./auth/auth.actions";
-import { AuthActions, AuthStore } from "./auth/auth-store.interface";
+import { LoginRequest } from "../../../infrastructure/firebase/requests/login.request";
+import { login } from "./auth.actions";
+import { AuthActions, AuthStore } from "./auth-store.interface";
 
 const useAuthStore = create<AuthStore & AuthActions>((set) => ({
   user: null,

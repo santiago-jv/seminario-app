@@ -1,196 +1,206 @@
-.login {
-    background-color: var(--variable-collection-new-logo);
-    height: 640px;
-    position: relative;
-    width: 360px;
-  }
-  
-  .login .overlap-group {
-    background-color: #ffffff;
-    border-radius: 60px 0px 0px 0px;
-    height: 459px;
-    left: 0;
-    position: absolute;
-    top: 181px;
-    width: 360px;
-  }
-  
-  .login .frame-2 {
-    align-items: center;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 16px;
-    justify-content: center;
-    left: 24px;
-    position: relative;
-    top: 12px;
-  }
-  
-  .login .text-wrapper-4 {
-    color: var(--variable-collection-new-logo);
-    font-family: "Arial-Italic", Helvetica;
-    font-size: 36px;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.36px;
-    line-height: 54.8px;
-    margin-top: -1px;
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-    width: fit-content;
-  }
-  
-  .login .frame-wrapper {
-    background-color: #ffffff;
-    border-radius: 7px;
-    box-shadow: var(--login);
-    height: 60px;
-    position: relative;
-    width: 312px;
-  }
-  
-  .login .frame-3 {
-    align-items: flex-start;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    left: 15px;
-    position: relative;
-    top: 7px;
-  }
-  
-  .login .input-text {
-    background: transparent;
-    border: none;
-    color: var(--variable-collection-new-logo);
-    font-family: "Roboto", Helvetica;
-    font-size: 15.2px;
-    font-weight: 400;
-    letter-spacing: 0.14px;
-    line-height: 22.8px;
-    margin-top: -1px;
-    padding: 0;
-    position: relative;
-    white-space: nowrap;
-    width: fit-content;
-  }
-  
-  .login .input {
-    background: transparent;
-    border: none;
-    color: #c4c4c4;
-    font-family: "Roboto", Helvetica;
-    font-size: 15.2px;
-    font-weight: 400;
-    letter-spacing: 0.14px;
-    line-height: 22.8px;
-    padding: 0;
-    position: relative;
-    white-space: nowrap;
-    width: 250px;
-  }
-  
-  .login .frame-4 {
-    align-items: flex-start;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 8px;
-    left: 15px;
-    position: relative;
-    top: 7px;
-  }
-  
-  .login .input-text-2 {
-    color: var(--variable-collection-new-logo);
-    font-family: "Roboto", Helvetica;
-    font-size: 15.2px;
-    font-weight: 400;
-    letter-spacing: 0.14px;
-    line-height: 22.8px;
-    margin-top: -1px;
-    position: relative;
-    white-space: nowrap;
-    width: fit-content;
-  }
-  
-  .login .img {
-    flex: 0 0 auto;
-    margin-right: -2.8px;
-    position: relative;
-    width: 132.8px;
-  }
-  
-  .login .text-wrapper-5 {
-    align-self: stretch;
-    color: var(--variable-collection-new-logo);
-    font-family: var(--header-3-font-family);
-    font-size: var(--header-3-font-size);
-    font-style: var(--header-3-font-style);
-    font-weight: var(--header-3-font-weight);
-    letter-spacing: var(--header-3-letter-spacing);
-    line-height: var(--header-3-line-height);
-    position: relative;
-    text-align: right;
-  }
-  
-  .login .button-instance {
-    background-color: #ae4564 !important;
-    border: 1px solid !important;
-    border-color: #000000 !important;
-    display: flex !important;
-    width: 234px !important;
-  }
-  
-  .login .logo-wrapper {
-    height: 118px;
-    left: 145px;
-    position: absolute;
-    top: 48px;
-    width: 69px;
-  }
-  
-  .login .logo-instance {
-    gap: 6.34px !important;
-    left: -4px !important;
-  }
-  
-  .login .design-component-instance-node {
-    height: 82.76px !important;
-    margin-top: -2.38px !important;
-    width: 69.04px !important;
-  }
-  
-  .login .logo-2 {
-    color: var(--x-4) !important;
-    font-size: 20.6px !important;
-    height: 13.07px !important;
-    width: 69.3px !important;
-  }
-  
-  .login .logo-3 {
-    color: var(--x-4) !important;
-    font-size: 11.9px !important;
-    letter-spacing: 2.02px !important;
-  }
-  
-  .login .back {
-    height: 24px !important;
-    left: 24px !important;
-    position: absolute !important;
-    top: 24px !important;
-    width: 14px !important;
-  }
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
 
-  button{
-    margin-top: 16px;
-    width: 200px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: var(--variable-collection-new-logo);
-    border: none;
-    color: #fff;
-    font-family: var( --header-3-line-height);
-  }
-  
-  
+.login {
+  background-color: var(--variable-collection-new-logo);
+  height: 640px;
+  position: relative;
+  width: 360px;
+}
+
+.login .overlap-group {
+  background-color: #ffffff;
+  border-radius: 60px 0px 0px 0px;
+  height: 459px;
+  left: 0;
+  position: absolute;
+  top: 181px;
+  width: 360px;
+}
+
+.login .frame-2 {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  left: 24px;
+  position: relative;
+  top: 12px;
+}
+
+.login .text-wrapper-4 {
+  color: var(--variable-collection-new-logo);
+  font-family: "Arial-Italic", Helvetica;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  line-height: 54.8px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.login .frame-wrapper {
+  background-color: #ffffff;
+  border-radius: 7px;
+  box-shadow: var(--login);
+  height: 60px;
+  position: relative;
+  width: 312px;
+}
+
+.login .frame-3 {
+  align-items: flex-start;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 15px;
+  position: relative;
+  top: 7px;
+}
+
+.login .input-text {
+  background: transparent;
+  border: none;
+  color: var(--variable-collection-new-logo);
+  font-family: "Roboto", Helvetica;
+  font-size: 15.2px;
+  font-weight: 400;
+  letter-spacing: 0.14px;
+  line-height: 22.8px;
+  margin-top: -1px;
+  padding: 0;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.login .input {
+  background: transparent;
+  border: none;
+  color: #c4c4c4;
+  font-family: "Roboto", Helvetica;
+  font-size: 15.2px;
+  font-weight: 400;
+  letter-spacing: 0.14px;
+  line-height: 22.8px;
+  padding: 0;
+  position: relative;
+  white-space: nowrap;
+  width: 250px;
+}
+
+.login .frame-4 {
+  align-items: flex-start;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  left: 15px;
+  position: relative;
+  top: 7px;
+}
+
+.login .input-text-2 {
+  color: var(--variable-collection-new-logo);
+  font-family: "Roboto", Helvetica;
+  font-size: 15.2px;
+  font-weight: 400;
+  letter-spacing: 0.14px;
+  line-height: 22.8px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.login .img {
+  flex: 0 0 auto;
+  margin-right: -2.8px;
+  position: relative;
+  width: 132.8px;
+}
+
+.login .text-wrapper-5 {
+  align-self: stretch;
+  color: var(--variable-collection-new-logo);
+  font-family: var(--header-3-font-family);
+  font-size: var(--header-3-font-size);
+  font-style: var(--header-3-font-style);
+  font-weight: var(--header-3-font-weight);
+  letter-spacing: var(--header-3-letter-spacing);
+  line-height: var(--header-3-line-height);
+  position: relative;
+  text-align: right;
+}
+
+.login .button-instance {
+  background-color: #ae4564 !important;
+  border: 1px solid !important;
+  border-color: #000000 !important;
+  display: flex !important;
+  width: 234px !important;
+}
+
+.login .logo-wrapper {
+  height: 118px;
+  left: 145px;
+  position: absolute;
+  top: 48px;
+  width: 69px;
+}
+
+.login .logo-instance {
+  gap: 6.34px !important;
+  left: -4px !important;
+}
+
+.login .design-component-instance-node {
+  height: 82.76px !important;
+  margin-top: -2.38px !important;
+  width: 69.04px !important;
+}
+
+.login .logo-2 {
+  color: var(--x-4) !important;
+  font-size: 20.6px !important;
+  height: 13.07px !important;
+  width: 69.3px !important;
+}
+
+.login .logo-3 {
+  color: var(--x-4) !important;
+  font-size: 11.9px !important;
+  letter-spacing: 2.02px !important;
+}
+
+.login .back {
+  height: 24px !important;
+  left: 24px !important;
+  position: absolute !important;
+  top: 24px !important;
+  width: 14px !important;
+}
+
+button {
+  margin-top: 16px;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--variable-collection-new-logo);
+  border: none;
+  color: #fff;
+  font-family: var(--header-3-line-height);
+}
+
+button:hover {
+  cursor: pointer;
+}

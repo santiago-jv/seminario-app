@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { LoginRequest } from "../../../infrastructure/firebase/requests/login.request";
 import { toast } from "sonner";
-import useAuthStore from "../../store";
+import useAuthStore from "../../store/auth";
 import { UserModel } from "../../../domain/models/auth/user.model";
 import { INITIAL_LOGIN_DATA_STATE } from "./constants";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { Logo } from "../../components/Logo";
-
 
 
 function Login() {
     const [loginData, setLoginData] = useState<LoginRequest>(INITIAL_LOGIN_DATA_STATE);
     const login = useAuthStore((state) => state.login);
-    const user: UserModel | null = useAuthStore((state) => state.user);
     const navigate = useNavigate();
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -24,16 +22,16 @@ function Login() {
         try {
             event.preventDefault();
             await login(loginData);
-            console.log(user);
+          
             toast.success("Bienvenido");
-            navigate("/dashboard/orders");
+            navigate("/admin/products");
         } catch (error) {
             toast.error("Error al iniciar sesión");
         }
     };
 
     return (
-
+        <main className="login-container">
     
         <div className="login" >
             <div className="overlap-group">
@@ -69,53 +67,7 @@ function Login() {
       </div>
     </div>
 
-    
-
-        /*<Container maxWidth="sm">
-
-
-
-            <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-                <Paper elevation={3} style={{ padding: "16px", width: "100%" }}>
-                    <Typography variant="h4" component="h1" align="center" fontFamily={"initial"} color="primary" >
-                        INICIO DE SESIÓN
-                    </Typography>
-                    <form onSubmit={onSubmit}>
-                        <TextField
-                            fullWidth
-                            
-                            label="Email"
-                            variant="outlined"
-                            type="email"
-                            name="email"
-                            id="email"
-                            onChange={onChange}
-                            value={loginData.email}
-                            margin="normal" />
-                        <TextField
-                            fullWidth
-                            label="Password"
-                            variant="outlined"
-                            type="password"
-                            name="password"
-                            id="password"
-                            onChange={onChange}
-                            value={loginData.password}
-                            margin="normal" />
-                        <Button
-                            fullWidth
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            style={{ marginTop: "16px" }}
-                        >
-                            Login
-                        </Button>
-                    </form>
-                </Paper>
-            </Box>
-        </Container>*/
+    </main>
     );
 }
 
