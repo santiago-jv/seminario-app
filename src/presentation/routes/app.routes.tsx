@@ -4,12 +4,13 @@ import Orders from "../pages/dashboard/orders/Orders";
 import RestaurantMenu from "../pages/restaurant-menu/RestaurantMenu";
 import Login from "../pages/login/Login";
 import { PrivateRoute } from "./private.routes";
+import ProductList from "../pages/dashboard/products/products-list/ProductList";
 
 const RoutesApp = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Navigate to="/dashboard" />} />
+                <Route path="/" element={<Navigate to="/admin/products" />} />
                 <Route path="auth/login" element={<Login />} />
                 <Route
                     path="dashboard"
@@ -20,8 +21,21 @@ const RoutesApp = () => {
                     }
                 >
                     <Route path="orders" element={<Orders />} />
+                    <Route path="products" element={<ProductList />} />
                 </Route>
-                <Route path="restaurants/:id/menu" element={<RestaurantMenu />} />
+
+                <Route
+                    path="admin"
+                    element={
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>
+                    }
+                >
+                    <Route path="orders" element={<Orders />} />
+                    <Route path="products" element={<ProductList />} />
+                </Route>
+                <Route path="restaurants/menu" element={<RestaurantMenu />} />
             </Routes>
         </BrowserRouter>
     );

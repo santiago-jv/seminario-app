@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    box-sizing: none;
+}
+
+
+.type{
+    background: var( --x-4);
+    height: 104.77px;
+    border-radius: 35px;
+    border: none;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20), 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    text-align: center;
+    padding: 1em;
+}
+
+.type:hover{
+    background-color: var( --variable-collection-new-logo);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20), 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    
+}
+
+.type-active {
+    background-color: var( --variable-collection-new-logo);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20), 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-salad{
+    border-radius: 50%;
+    background: #ECECEC;
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.678);
+    width: 50.37px;
+    height: 50.37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.icon-img{
+    width: 23.87px;
+    height: 23.84px;
+
+}
+
+.food-type{
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 21px;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: var( --x-2);
+    margin-top: 5px;
+    width: 100px;
+    word-wrap: break-word;
+    
+}

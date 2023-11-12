@@ -1,6 +1,81 @@
 * {
-    font-family: Roboto;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  font-family: Roboto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --1-25: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  --aaacae: rgba(170, 172, 174, 1);
+  --butler-16-font-family: "Arial-Italic", Helvetica;
+  --butler-16-font-size: 16px;
+  --butler-16-font-style: italic;
+  --butler-16-font-weight: 400;
+  --butler-16-letter-spacing: 0px;
+  --butler-16-line-height: 150%;
+  --butler-24-font-family: "Arial-Italic", Helvetica;
+  --butler-24-font-size: 24px;
+  --butler-24-font-style: italic;
+  --butler-24-font-weight: 400;
+  --butler-24-letter-spacing: 0px;
+  --butler-24-line-height: 150%;
+  --button: 0px 2px 2px 0px rgba(0, 0, 0, 0.2), 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  --dfe-2e-6: rgba(223, 226, 229, 1);
+  --f-7f-7fb: rgba(247, 247, 251, 1);
+  --header-1-font-family: "Poppins-SemiBold", Helvetica;
+  --header-1-font-size: 24px;
+  --header-1-font-style: normal;
+  --header-1-font-weight: 600;
+  --header-1-letter-spacing: -0.72px;
+  --header-1-line-height: normal;
+  --header-2-font-family: "Poppins-Medium", Helvetica;
+  --header-2-font-size: 16px;
+  --header-2-font-style: normal;
+  --header-2-font-weight: 500;
+  --header-2-letter-spacing: -0.48px;
+  --header-2-line-height: normal;
+  --header-3-font-family: "Poppins-Light", Helvetica;
+  --header-3-font-size: 14px;
+  --header-3-font-style: normal;
+  --header-3-font-weight: 300;
+  --header-3-letter-spacing: -0.56px;
+  --header-3-line-height: 150%;
+  --icon-text-black-font-family: "Poppins-Light", Helvetica;
+  --icon-text-black-font-size: 10px;
+  --icon-text-black-font-style: normal;
+  --icon-text-black-font-weight: 300;
+  --icon-text-black-letter-spacing: -0.4px;
+  --icon-text-black-line-height: 150%;
+  --icon-text-font-family: "Poppins-Medium", Helvetica;
+  --icon-text-font-size: 10px;
+  --icon-text-font-style: normal;
+  --icon-text-font-weight: 500;
+  --icon-text-letter-spacing: -0.4px;
+  --icon-text-line-height: 150%;
+  --inner: ;
+  --login: 0px 1.3716474771499634px 2.05747127532959px 0px rgba(0, 0, 0, 0.17),
+    0px 0px 2.05747127532959px 0px rgba(0, 0, 0, 0.08);
+  --shadow-4-2-35: 0px 0px 2px 0px rgba(0, 0, 0, 0.35);
+  --stroke: rgba(149, 174, 69, 1);
+  --variable-collection-button-color: rgba(150, 47, 78, 1);
+  --variable-collection-new-color-alternative: rgba(184, 101, 126, 1);
+  --variable-collection-new-logo: rgba(174, 69, 101, 1);
+  --x-1: rgba(149, 174, 69, 1);
+  --x-2: rgba(10, 10, 10, 1);
+  --x-3: rgba(195, 47, 39, 1);
+  --x-4: rgba(240, 236, 230, 1);
+  --x-5: rgba(255, 159, 28, 1);
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input {
+  outline: none;
 }

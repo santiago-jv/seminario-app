@@ -13,10 +13,12 @@ export class FirebaseService {
     const reference = ref(this.database, path);
     const queryBy = query(reference, orderByChild(key), equalTo(value));
     const snapshot = await get(queryBy);
+    console.log(snapshot);
     const snapshotvalue = snapshot.val();
     const firstKey = Object.keys(snapshotvalue)[0];
     return snapshotvalue[firstKey];
   }
+  
 }
 
 export const firebaseService = new FirebaseService();
