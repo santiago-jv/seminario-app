@@ -5,6 +5,7 @@ import RestaurantMenu from "../pages/restaurant-menu/RestaurantMenu";
 import Login from "../pages/login/Login";
 import { PrivateRoute } from "./private.routes";
 import ProductList from "../pages/dashboard/products/products-list/ProductList";
+import Boards from "../pages/dashboard/boards/Boards";
 
 const RoutesApp = () => {
     return (
@@ -32,8 +33,11 @@ const RoutesApp = () => {
                         </PrivateRoute>
                     }
                 >
-                    <Route path="orders" element={<Orders />} />
+                 
                     <Route path="products" element={<ProductList />} />
+                    <Route path="boards" element={<Boards />} />
+            
+                    <Route path="boards/:boardId/orders" element={<Orders />} />
                 </Route>
                 <Route path="restaurants/menu" element={<RestaurantMenu />} />
             </Routes>
