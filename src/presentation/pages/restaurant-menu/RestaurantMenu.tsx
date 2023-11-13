@@ -5,10 +5,16 @@ import ButtonFoodType from "../../components/button-food-type/ButtonFoodType";
 import { v4 as uuidv4 } from "uuid";
 import Foodcard from "../../components/food-card/FoodCard";
 import { FaShoppingCart } from 'react-icons/fa';
+import Modal from "../../components/modal/Modal";
+import styled from "styled-components";
+
+
 
 
 const ResutaurantMenu = () => {
   const [categorySelected, setCategorySelected] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [estadoModal2, cambiarEstadoModal2] = useState(false);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const getProductList = async () => {
@@ -58,6 +64,11 @@ const ResutaurantMenu = () => {
     }
   }, [categorySelected]);
 
+  const handleProductClick = (product:any) => {
+    setSelectedProduct(product); // Actualiza el estado con la tarjeta seleccionada
+    cambiarEstadoModal2(true); // Abre el modal
+  };
+
   return (
     <>
       <div className="home-content">
@@ -103,8 +114,29 @@ const ResutaurantMenu = () => {
               price={product.price}
               description={product.description}
               imageUrl={product.imageUrl}
+              onClick={()=> handleProductClick(product)}
             />
           ))}
+
+         <Modal 
+          estado={estadoModal2}
+          cambiarEstado={cambiarEstadoModal2}
+         >
+          <Container>
+            {selectedProduct &&
+              <div key={uuidv4()}>
+                <h1>{selectedProduct.name}</h1>
+                {/*<img src={selectedProduct.imageUrl} alt="" />*/}
+                <p>{selectedProduct.description}</p>
+                <p>{selectedProduct.price}</p>
+              </div>
+            }
+          </Container>
+
+         </Modal>
+              
+                
+           
         </div>
         <nav className="nav">
           <FaShoppingCart  className="nav__icon" size={20} color="white"  />
@@ -113,5 +145,12 @@ const ResutaurantMenu = () => {
     </>
   );
 };
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+  `;
 
 export default ResutaurantMenu;

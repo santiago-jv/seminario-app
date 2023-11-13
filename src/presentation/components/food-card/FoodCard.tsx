@@ -1,8 +1,10 @@
+
 import './styles.css'
 
 function Foodcard(params:any){
 
     //create function that limits the text size of the description
+
 
 
     const limitText = (text:string, limit:number = 30) => {
@@ -14,8 +16,8 @@ function Foodcard(params:any){
     }
 
     return(
-        <div className='contend'>
-            <div className='contend-food'>
+        <div  className='contend'>
+            <div onClick={params.onClick} className='contend-food'>
                 <div className='conted-img'>
                     <img className='img-food' src={params.imageUrl} alt="" />
                 </div>
@@ -27,8 +29,10 @@ function Foodcard(params:any){
                     <p title={params.description} className='description'>{limitText(params.description)}</p>
                 </div>
             </div>
-
+          
         </div>
+
+       
     )
 }
 

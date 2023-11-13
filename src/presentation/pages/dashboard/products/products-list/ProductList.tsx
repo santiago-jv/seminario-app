@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import {useEffect, useState} from "react"
 import Modal from "../../../../components/modal/Modal";
 import styled from "styled-components";
-import Bar from "../../../../components/bar/Bar";
 import Foodcard from "../../../../components/food-card/FoodCard";
 import ButtonFoodType from "../../../../components/button-food-type/ButtonFoodType";
 import './styles.css'
@@ -80,7 +79,7 @@ const ProductList = () => {
         </div>
         <button onClick={closeSession} className='log-out'>Cerrar sesión</button>
       </div>
-      
+    
       <div>
         <h2 className='titel-food_type'>Tipo de comida</h2>
         <div className='conten-button-food-type'>
@@ -109,6 +108,7 @@ const ProductList = () => {
             />
           ))
         }
+        
       </div>
       <nav className="nav">
         <div className='nav__container'>
@@ -146,6 +146,7 @@ const ProductList = () => {
     </>
   )
 };
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
