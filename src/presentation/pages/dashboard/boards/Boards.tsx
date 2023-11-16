@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./board.css"
 import "../products/products-list/styles.css";
 
-import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaArrowCircleLeft, FaCog } from "react-icons/fa";
 import styled from "styled-components";
 import Modal from "../../../components/modal/Modal";
 const Boards = () => {
@@ -88,7 +88,7 @@ const Boards = () => {
             </Modal>
           </div>
         </ul>
-        }
+        )}
     </>
       
    

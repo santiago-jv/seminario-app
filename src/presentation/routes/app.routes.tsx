@@ -6,6 +6,7 @@ import Login from "../pages/login/Login";
 import { PrivateRoute } from "./private.routes";
 import ProductList from "../pages/dashboard/products/products-list/ProductList";
 import Boards from "../pages/dashboard/boards/Boards";
+import Order from "../pages/order/Order";
 
 const RoutesApp = () => {
     return (
@@ -40,6 +41,8 @@ const RoutesApp = () => {
                     <Route path="boards/:boardId/orders" element={<Orders />} />
                 </Route>
                 <Route path="restaurants/menu" element={<RestaurantMenu />} />
+                <Route path="orders/:orderId" element={<Order />} />
+
             </Routes>
         </BrowserRouter>
     );

@@ -27,8 +27,7 @@ const ResutaurantMenu = () => {
   
 
   const handleAddProduct = () => {
-    const total = getTotalPrice();
-    const newCartItem = { product: selectedProduct, quantity, total };
+    const newCartItem = { product: selectedProduct, quantity };
   
     // Actualiza el estado del pedido
     setShopOrder({
@@ -52,15 +51,18 @@ const ResutaurantMenu = () => {
   };
 
   const handleCartIconClick = () => {
-    if (cartModalContent.length > 0) {
-      const total = cartModalContent.reduce(
-        (acc: number, item: { total: number }) => acc + item.total,
+    console.log("Open", shopOrder);
+   
+      const total = shopOrder.order.reduce(
+        (acc: number, item:any) => acc + (item.quantity * item.product.price),
         0
       );
-      const cartContent = { order: cartModalContent, total };
-      setCartModalContent(cartContent);
-      setShowCartModal(prevState => !prevState);
-    }
+
+    
+   
+      setShopOrder({ ...shopOrder,order: cartModalContent, total });
+      setShowCartModal(!showCartModal);
+    
   };
   
   
@@ -224,8 +226,8 @@ const ResutaurantMenu = () => {
           {cartModalContent && (
             <div className="contendmodal" key={uuidv4()}>
               <h2>Carrito de compras</h2>
-              {cartModalContent &&
-                cartModalContent.order.map((item: { product: { name:any, imageUrl: any }; quantity: number; total: number }, index: number) => (
+              {shopOrder.order.length > 0 &&
+                shopOrder.order.map((item: any, index: number) => (
                   <div key={index}>
                     <div className="cartcontendp">
                       <div className="cartimgUrl">
@@ -237,14 +239,14 @@ const ResutaurantMenu = () => {
                         <p>x{item.quantity}</p>
                       </div>
                       <div>
-                        <p>${item.total}</p>
+                        <p>${item.product.price * item.quantity}</p>
                       </div>
                       </div>
                     </div>
                   </div>
                 ))
               }
-              <p className="cartall">Total: {cartModalContent.total}</p>
+              <p className="cartall">Total: {shopOrder.total}</p>
               <button onClick={() => setShowCartModal(false)}>Cerrar</button>
             </div>
           )}
