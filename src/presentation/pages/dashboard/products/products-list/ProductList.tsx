@@ -9,6 +9,7 @@ import { database } from "../../../../../infrastructure/firebase/config/firebase
 import { get, ref } from "firebase/database";
 import { v4 as uuidv4 } from "uuid";
 import { FaCog, FaArrowCircleLeft } from "react-icons/fa";
+import Loader from "../../../../components/loader/Loader";
 
 const ProductList = () => {
   const [estadoModal1, cambiarEstadoModal1] = useState(false);
@@ -16,6 +17,8 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const getProductList = async () => {
     try {
       const productsRef = ref(database, "products");
@@ -23,7 +26,6 @@ const ProductList = () => {
       const snapshot = await get(productsRef);
 
       const products = snapshot.val();
-      console.log(Object.values(products));
       setProducts(Object.values(products));
       setFilteredProducts(Object.values(products));
     } catch (error) {
@@ -42,12 +44,15 @@ const ProductList = () => {
       const categories = snapshot.val();
       console.log(Object.values(categories));
       setCategories(Object.values(categories));
+      
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getProductList();
     getCategorieList();
   }, []);
@@ -67,6 +72,9 @@ const ProductList = () => {
     localStorage.removeItem("auth");
     window.location.href = "/";
   };
+  if(isLoading) {
+    return <Loader />
+  }
 
   return (
     <>
