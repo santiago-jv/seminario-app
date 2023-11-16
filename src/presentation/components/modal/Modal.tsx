@@ -9,7 +9,7 @@ function Modal({children, estado, cambiarEstado}:any){
                 <Overlay>
                     <ContenedorModal>
                         <EncabezadoModal>
-                            <h3>Titulo</h3>
+                            
                         </EncabezadoModal>
 
                         <BotonCerrar onClick={()=> cambiarEstado(false)}>
