@@ -11,7 +11,6 @@ import './Resmenu.css'
 import { OrderStatus } from "../dashboard/orders/Orders";
 import Loader from "../../components/loader/Loader";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 
 const ResutaurantMenu = () => {

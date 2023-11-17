@@ -83,8 +83,8 @@ const Orders: React.FC = () => {
         newStatus = OrderStatus.IN_PROGRESS;
       } else if (order.status === OrderStatus.IN_PROGRESS) {
         newStatus = OrderStatus.COMPLETED;
-        console.log("hola");
         const orderRef = ref(database, `orders/${order.id}`);
+        await set(orderRef, { ...order, status: newStatus });
         setOrder({ ...order, status: newStatus });
         await set(orderRef,null);
         return
