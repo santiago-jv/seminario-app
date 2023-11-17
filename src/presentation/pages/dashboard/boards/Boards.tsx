@@ -8,13 +8,16 @@ import "../products/products-list/styles.css";
 import { FaArrowCircleLeft, FaCog } from "react-icons/fa";
 import styled from "styled-components";
 import Modal from "../../../components/modal/Modal";
+import Loader from "../../../components/loader/Loader";
 const Boards = () => {
   const [boards, setBoards] = useState([]);
   const navigate = useNavigate();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [estadoModal1, cambiarEstadoModal1] = useState(false);
   const getBoards = async () => {
     try {
+      setIsLoading(true);
       const boardssRef = ref(database, "boards");
 
       const snapshot = await get(boardssRef);
@@ -25,6 +28,7 @@ const Boards = () => {
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false);
   };
 
   const goToOrderDetail = (boardId:string) => {
@@ -34,6 +38,11 @@ const Boards = () => {
   useEffect(() => {
     getBoards();
   }, []);
+
+  if(isLoading) {
+    return <Loader />
+  }
+
   return (
     <>
      <div className="boards-container">
@@ -68,7 +77,7 @@ const Boards = () => {
             >
               Manejo de Cuenta
             </button>
-            <NavLink to="/admin/boards" className="account-management link">
+            <NavLink to="/admin/products" className="account-management link">
               Manejo de Menú
             </NavLink>
             <Link to="/admin/boards" className="account-management link">

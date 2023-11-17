@@ -141,7 +141,7 @@ const ProductList = () => {
               >
                 Manejo de Cuenta
               </button>
-              <NavLink to="/admin/boards" className="account-management link">
+              <NavLink to="/admin/products" className="account-management link">
                 Manejo de Menú
               </NavLink>
               <Link to="/admin/boards" className="account-management link">

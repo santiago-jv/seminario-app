@@ -15,21 +15,16 @@ import Modal from "../../../components/modal/Modal";
 import { Link, NavLink } from "react-router-dom";
 import { FaArrowCircleLeft, FaCog } from "react-icons/fa";
 import "../products/products-list/styles.css";
+import Loader from "../../../components/loader/Loader";
 
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  imageUrl: string;
-  categoryId: number;
-}
+
 
 export enum OrderStatus {
-  ACTIVE = "ACTIVE",
-  COMPLETED = "COMPLETED",
-  CANCELLED = "CANCELLED",
+  READY_FOR_ACCEPT = "READY_FOR_ACCEPT",
+  READY_FOR_PAY = "READY_FOR_PAY",
+  ORDER_PAID = "ORDER_PAID",
   IN_PROGRESS = "IN_PROGRESS",
+  COMPLETED = "COMPLETED",
 }
 
 const Orders: React.FC = () => {
@@ -39,6 +34,8 @@ const Orders: React.FC = () => {
 
   const [board, setBoard] = useState<any>(null);
   const [order, setOrder] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const getBoardById = async () => {
     try {
       const reference = ref(database, "boards");
@@ -51,6 +48,7 @@ const Orders: React.FC = () => {
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false);
   };
 
   const getOrdersByBoardId = (boardId: string) => {
@@ -61,9 +59,7 @@ const Orders: React.FC = () => {
       const snapshotValue = snapshot.val();
 
       if (snapshotValue) {
-        const filteredOrders = Object.values(snapshotValue).filter(
-          (order: any) => order.status === OrderStatus.ACTIVE
-        );
+        const filteredOrders = Object.values(snapshotValue);
 
         if (filteredOrders.length > 0) {
           const firstOrder = filteredOrders[0];
@@ -83,12 +79,12 @@ const Orders: React.FC = () => {
     try {
       let newStatus;
 
-      if (order.status === OrderStatus.ACTIVE) {
+      if (order.status === OrderStatus.READY_FOR_ACCEPT) {
+        newStatus = OrderStatus.READY_FOR_PAY;
+      } else if (order.status === OrderStatus.ORDER_PAID) {
         newStatus = OrderStatus.IN_PROGRESS;
       } else if (order.status === OrderStatus.IN_PROGRESS) {
         newStatus = OrderStatus.COMPLETED;
-      } else {
-        return;
       }
 
       const orderRef = ref(database, `orders/${order.id}`);
@@ -101,25 +97,73 @@ const Orders: React.FC = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getBoardById();
     getOrdersByBoardId(boardId!);
   }, [boardId]);
 
+  const defineStatusButtonLabel = () => {
+    switch (order.status) {
+      case OrderStatus.READY_FOR_ACCEPT:
+        return "Aceptar orden";
+      case OrderStatus.READY_FOR_PAY:
+        return "Esperando pago";
+      case OrderStatus.ORDER_PAID:
+        return "Pasar a cocina";
+      case OrderStatus.IN_PROGRESS:
+        return "Marcar pedido como listo";
+
+      default:
+        return "Pedido completado";
+    }
+  };
+
+  const definedStatusLabel = () => {
+    switch (order.status) {
+      case OrderStatus.READY_FOR_ACCEPT:
+        return "Listo para aceptar";
+      case OrderStatus.READY_FOR_PAY:
+        return "Esperando pago";
+
+      case OrderStatus.IN_PROGRESS:
+        return "En cocina";
+      case OrderStatus.ORDER_PAID:
+        return "Listo para preparar";
+      case OrderStatus.COMPLETED:
+        return "Pedido completado";
+    }
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return order && board ? (
     <div className="orders">
-      <h1>{board.name}</h1>
-      <h2 className="order-id">Identificador de la orden: {order.id}</h2>
-      <h2 className="order-id">Total de la orden: {order.total}</h2>
+      <center>
+        <br></br>
+        <h1>{board.name}</h1>
+        <br></br>
+        <h2 className="order-id">id de la orden: {order.id}</h2>
+        <br></br>
+        <br></br>
+        <h2>Total de la orden: ${order.total}</h2>
+        <br></br>
+        <h3>Estado: {definedStatusLabel()}</h3>
 
-      <h3>Estado: {order?.status}</h3>
+        {order.status === OrderStatus.READY_FOR_PAY && (
+          <div
+            style={{ marginTop: "1em", marginBottom: "1en" }}
+            className="loader"
+          ></div>
+        )}
 
-      <button onClick={handleStatusChange}>
-        {order.status === OrderStatus.ACTIVE
-          ? "Pasar a En Progreso"
-          : order.status === OrderStatus.IN_PROGRESS
-          ? "Marcar como Completado"
-          : "Estado Desconocido"}
-      </button>
+        {order.status !== OrderStatus.COMPLETED && (
+          <button onClick={handleStatusChange}>
+            {defineStatusButtonLabel()}
+          </button>
+        )}
+      </center>
       {/* ... other components */}
       <nav onClick={() => setIsOpenMenu(!isOpenMenu)} className="nav">
         {isOpenMenu ? (
@@ -143,7 +187,7 @@ const Orders: React.FC = () => {
             >
               Manejo de Cuenta
             </button>
-            <NavLink to="/admin/boards" className="account-management link">
+            <NavLink to="/admin/products" className="account-management link">
               Manejo de Menú
             </NavLink>
             <Link to="/admin/boards" className="account-management link">
