@@ -6,7 +6,13 @@ import Login from "../pages/login/Login";
 import { PrivateRoute } from "./private.routes";
 import ProductList from "../pages/dashboard/products/products-list/ProductList";
 import Boards from "../pages/dashboard/boards/Boards";
+<<<<<<< Updated upstream
 import Order from "../pages/order/Order";
+=======
+import Order from "../pages/dashboard/orders/Orders";
+import Pagos from "../components/pagos/Pagos";
+import State from "../components/state/State";
+>>>>>>> Stashed changes
 
 const RoutesApp = () => {
     return (
@@ -41,8 +47,12 @@ const RoutesApp = () => {
                     <Route path="boards/:boardId/orders" element={<Orders />} />
                 </Route>
                 <Route path="restaurants/menu" element={<RestaurantMenu />} />
+<<<<<<< Updated upstream
                 <Route path="orders/:orderId" element={<Order />} />
 
+=======
+                <Route path="/orders/:orderId" element={<Order/>} />
+>>>>>>> Stashed changes
             </Routes>
         </BrowserRouter>
     );

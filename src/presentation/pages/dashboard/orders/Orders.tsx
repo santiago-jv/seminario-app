@@ -16,7 +16,6 @@ import { Link, NavLink } from "react-router-dom";
 import { FaArrowCircleLeft, FaCog } from "react-icons/fa";
 import "../products/products-list/styles.css";
 import Loader from "../../../components/loader/Loader";
-import { doc, deleteDoc } from "firebase/firestore";
 
 export enum OrderStatus {
   READY_FOR_ACCEPT = "READY_FOR_ACCEPT",

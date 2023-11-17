@@ -11,6 +11,7 @@ import './Resmenu.css'
 import { OrderStatus } from "../dashboard/orders/Orders";
 import Loader from "../../components/loader/Loader";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const ResutaurantMenu = () => {
@@ -32,6 +33,7 @@ const ResutaurantMenu = () => {
   const handleAddProduct = () => {
     const newCartItem = { product: selectedProduct, quantity };
     
+  
     // Actualiza el estado del pedido
     setShopOrder({
       ...shopOrder,
@@ -245,7 +247,7 @@ const ResutaurantMenu = () => {
             
         </div>
         <nav className="nav">
-          <FaShoppingCart  className="nav__icon" size={20} color="white" onClick={handleCartIconClick} />
+        <FaShoppingCart  className="nav__icon" size={20} color="white" onClick={handleCartIconClick} />
           {showCartModal && (
       <Modal estado={showCartModal} cambiarEstado={setShowCartModal}>
         <Contend>
@@ -279,7 +281,7 @@ const ResutaurantMenu = () => {
         </Contend>
       </Modal>
     )}
-        
+              
         </nav>
       </div>
     </>
