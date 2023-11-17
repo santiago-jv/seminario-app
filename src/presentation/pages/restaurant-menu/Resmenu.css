@@ -73,7 +73,7 @@
 
 .quantity-button:disabled{
     background-color: var(--variable-collection-button-color);
-    color: #000;
+   
     cursor: not-allowed;
 }
 

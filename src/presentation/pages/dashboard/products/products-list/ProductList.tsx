@@ -42,7 +42,6 @@ const ProductList = () => {
       const snapshot = await get(categoriesRef);
 
       const categories = snapshot.val();
-      console.log(Object.values(categories));
       setCategories(Object.values(categories));
       
     } catch (error) {

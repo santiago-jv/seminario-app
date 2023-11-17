@@ -17,8 +17,6 @@ import { FaArrowCircleLeft, FaCog } from "react-icons/fa";
 import "../products/products-list/styles.css";
 import Loader from "../../../components/loader/Loader";
 
-
-
 export enum OrderStatus {
   READY_FOR_ACCEPT = "READY_FOR_ACCEPT",
   READY_FOR_PAY = "READY_FOR_PAY",

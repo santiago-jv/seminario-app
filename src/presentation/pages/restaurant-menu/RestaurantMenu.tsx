@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { database } from "../../../infrastructure/firebase/config/firebase.config";
-import { get, ref } from "firebase/database";
+import { get, ref, set } from "firebase/database";
 import ButtonFoodType from "../../components/button-food-type/ButtonFoodType";
 import { v4 as uuidv4 } from "uuid";
 import Foodcard from "../../components/food-card/FoodCard";
@@ -8,6 +8,8 @@ import { FaShoppingCart } from 'react-icons/fa';
 import Modal from "../../components/modal/Modal";
 import styled from "styled-components";
 import './Resmenu.css'
+import { OrderStatus } from "../dashboard/orders/Orders";
+import Loader from "../../components/loader/Loader";
 
 
 const ResutaurantMenu = () => {
@@ -23,7 +25,7 @@ const ResutaurantMenu = () => {
   });
   const [cartModalContent, setCartModalContent] = useState<any>([]);
   const [showCartModal, setShowCartModal] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   
 
   const handleAddProduct = () => {
@@ -75,7 +77,7 @@ const ResutaurantMenu = () => {
       const snapshot = await get(productsRef);
 
       const products = snapshot.val();
-      console.log(Object.values(products));
+     
       setProducts(Object.values(products));
       setFilteredProducts(Object.values(products));
     } catch (error) {
@@ -92,14 +94,16 @@ const ResutaurantMenu = () => {
       const snapshot = await get(categoriesRef);
 
       const categories = snapshot.val();
-      console.log(Object.values(categories));
+  
       setCategories(Object.values(categories));
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false)
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getProductList();
     getCategorieList();
   }, []);
@@ -116,9 +120,9 @@ const ResutaurantMenu = () => {
   }, [categorySelected]);
 
   const handleProductClick = (product:any) => {
-    setSelectedProduct(product); // Actualiza el estado con la tarjeta seleccionada
+    setSelectedProduct(product); 
     setQuantity(1);
-    cambiarEstadoModal2(true); // Abre el modal
+    cambiarEstadoModal2(true); 
   };
 
   const handleQuantityChange = (newQuantity: number) => {
@@ -132,8 +136,29 @@ const ResutaurantMenu = () => {
     return 0;
   };
 
- 
+  const createOrder = async () => {
+    try {
+     
+      const orderData = {
+        id: uuidv4(),
+        order: shopOrder.order,
+        total: shopOrder.total,
+        status: OrderStatus.READY_FOR_ACCEPT,
+        boardId:"c9efb63f-93e8-486e-85cd-b2510bd2bbc0"
+      }
+      console.log(orderData);
+      const ordersRef = ref(database, "orders/"+orderData.id);
+      await set(ordersRef, orderData);
   
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+  
+  if(isLoading) {
+    return <Loader />
+  }
 
   return (
     <>
@@ -247,7 +272,7 @@ const ResutaurantMenu = () => {
                 ))
               }
               <p className="cartall">Total: {shopOrder.total}</p>
-              <button onClick={() => setShowCartModal(false)}>Cerrar</button>
+              <button onClick={createOrder}>Ordenar</button>
             </div>
           )}
         </Contend>
