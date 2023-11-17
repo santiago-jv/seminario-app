@@ -16,6 +16,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FaArrowCircleLeft, FaCog } from "react-icons/fa";
 import "../products/products-list/styles.css";
 import Loader from "../../../components/loader/Loader";
+import { doc, deleteDoc } from "firebase/firestore";
 
 export enum OrderStatus {
   READY_FOR_ACCEPT = "READY_FOR_ACCEPT",
@@ -83,7 +84,13 @@ const Orders: React.FC = () => {
         newStatus = OrderStatus.IN_PROGRESS;
       } else if (order.status === OrderStatus.IN_PROGRESS) {
         newStatus = OrderStatus.COMPLETED;
+        console.log("hola");
+        const orderRef = ref(database, `orders/${order.id}`);
+        setOrder({ ...order, status: newStatus });
+        await set(orderRef,null);
+        return
       }
+  
 
       const orderRef = ref(database, `orders/${order.id}`);
       await set(orderRef, { ...order, status: newStatus });

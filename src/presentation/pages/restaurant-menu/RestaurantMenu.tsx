@@ -10,6 +10,7 @@ import styled from "styled-components";
 import './Resmenu.css'
 import { OrderStatus } from "../dashboard/orders/Orders";
 import Loader from "../../components/loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 
 const ResutaurantMenu = () => {
@@ -27,10 +28,10 @@ const ResutaurantMenu = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
-
+  const navigate = useNavigate();
   const handleAddProduct = () => {
     const newCartItem = { product: selectedProduct, quantity };
-  
+    
     // Actualiza el estado del pedido
     setShopOrder({
       ...shopOrder,
@@ -148,8 +149,8 @@ const ResutaurantMenu = () => {
       }
       console.log(orderData);
       const ordersRef = ref(database, "orders/"+orderData.id);
-      await set(ordersRef, orderData);
-  
+      await set(ordersRef, orderData);  
+      navigate("/orders/"+orderData.id);
     } catch (error) {
       console.error(error);
     }
