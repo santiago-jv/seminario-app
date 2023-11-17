@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import './loader.css'; // Estilo CSS directamente en el componente
+import './loader.css'; 
 
 const Loader = () => {
  
